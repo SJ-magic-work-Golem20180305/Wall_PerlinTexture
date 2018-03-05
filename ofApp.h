@@ -29,6 +29,7 @@ private:
 	enum TEXTURE_TYPE{
 		TEXTURE_WOOD,
 		TEXTURE_MARBLE,
+		TEXTURE_RANDOMLINE,
 		
 		NUM_TEXTURE_TYPES,
 	};
@@ -53,6 +54,7 @@ private:
 	ofxPanel gui;
 	ofxColorSlider guiColor_Wood;
 	ofxColorSlider guiColor_Marble;
+	ofxColorSlider guiColor_RandomLine;
 	
 
 

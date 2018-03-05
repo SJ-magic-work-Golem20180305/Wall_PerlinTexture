@@ -60,6 +60,9 @@ void ofApp::setup(){
 	shader[TEXTURE_MARBLE].load( "Marble.vert", "Marble.frag" );
 	SyphonTexture[TEXTURE_MARBLE].setName("Screen Output Marble");
 	
+	shader[TEXTURE_RANDOMLINE].load( "RandomLine.vert", "RandomLine.frag" );
+	SyphonTexture[TEXTURE_RANDOMLINE].setName("Screen Output RandomLine");
+	
 	for(int i = 0; i < NUM_TEXTURE_TYPES; i++){
 		fbo[i].allocate(ofGetWidth(), ofGetHeight(), GL_RGBA);
 	}
@@ -79,6 +82,7 @@ void ofApp::setup_gui()
 		
 		gui.add(guiColor_Wood.setup("Wood", initColor, minColor, maxColor));
 		gui.add(guiColor_Marble.setup("Marble", initColor, minColor, maxColor));
+		gui.add(guiColor_RandomLine.setup("RandomLine", initColor, minColor, maxColor));
 	}
 }
 
@@ -157,6 +161,10 @@ void ofApp::draw(){
 					
 				case TEXTURE_MARBLE:
 					BaseColor = guiColor_Marble;
+					break;
+					
+				case TEXTURE_RANDOMLINE:
+					BaseColor = guiColor_RandomLine;
 					break;
 					
 				default:
