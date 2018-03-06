@@ -195,6 +195,6 @@ void main() {
 	
 	val = 1. - val;
 	vec3 color = vec3(val * BaseColor.r, val * BaseColor.g, val * BaseColor.b);
-	gl_FragColor = vec4(color, BaseColor.a);
+	gl_FragColor = vec4(color, BaseColor.a * val);
 }
 

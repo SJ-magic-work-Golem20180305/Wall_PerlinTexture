@@ -115,6 +115,6 @@ void main() {
 	********************/
 	// gl_FragColor = vec4(1.0-color,1.0);
 	ColorVal = 1.0 - ColorVal;
-	gl_FragColor = vec4(ColorVal * BaseColor.r, ColorVal * BaseColor.g, ColorVal * BaseColor.b,1.0);
+	gl_FragColor = vec4(ColorVal * BaseColor.r, ColorVal * BaseColor.g, ColorVal * BaseColor.b, ColorVal * BaseColor.a);
 }
 

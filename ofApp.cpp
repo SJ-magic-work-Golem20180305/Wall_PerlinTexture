@@ -90,6 +90,10 @@ void ofApp::setup_gui()
 void ofApp::update(){
 	/********************
 	********************/
+	bool b_OscReceived = false;
+	
+	/********************
+	********************/
 	while(Osc.OscReceive.hasWaitingMessages()){
 		ofxOscMessage m_receive;
 		Osc.OscReceive.getNextMessage(&m_receive);
@@ -98,6 +102,8 @@ void ofApp::update(){
 			MocapPos_x = m_receive.getArgAsFloat(0);
 			MocapPos_y = m_receive.getArgAsFloat(1);
 			MocapPos_z = m_receive.getArgAsFloat(2);
+			
+			b_OscReceived = true;
 		}
 	}
 	
@@ -113,10 +119,17 @@ void ofApp::update(){
 	
 	/********************
 	********************/
-	map_mocapPos_to_MousePos();
+	if(b_OscReceived)	map_mocapPos_to_MousePos();
 }
 
 /******************************
+description
+	MocapPos_xをmappingし直す.
+	
+Warning
+	OSC message を受け取っていないのに、本関数を呼ぶと、
+	mappingが繰り返され、誤った値にズレこんでいく -> プルプルする.
+	ので注意.
 ******************************/
 void ofApp::map_mocapPos_to_MousePos()
 {
@@ -138,6 +151,7 @@ void ofApp::draw(){
 	
 	/********************
 	********************/
+	ofDisableAlphaBlending();
 	for(int i = 0; i < NUM_TEXTURE_TYPES; i++){
 		fbo[i].begin();
 		shader[i].begin();
@@ -189,6 +203,8 @@ void ofApp::draw(){
 	/********************
 	Syphon Stuff
 	********************/
+	ofEnableAlphaBlending();
+	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
 	for(int i = 0; i < NUM_TEXTURE_TYPES; i++){
 		SyphonTexture[i].publishTexture(&fbo[i].getTexture());
 	}

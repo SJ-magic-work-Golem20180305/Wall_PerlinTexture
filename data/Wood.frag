@@ -164,7 +164,7 @@ void main() {
 	// color = vec3(0, 0, noise);
 	color = vec3(noise * BaseColor.r, noise * BaseColor.g, noise * BaseColor.b);
 
-	gl_FragColor = vec4(color,BaseColor.a);
+	gl_FragColor = vec4(color, noise * BaseColor.a);
 }
   
   
