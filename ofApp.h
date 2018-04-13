@@ -30,6 +30,7 @@ private:
 		TEXTURE_WOOD,
 		TEXTURE_MARBLE,
 		TEXTURE_RANDOMLINE,
+		TEXTURE_RANDOMLINE_FINE,
 		
 		NUM_TEXTURE_TYPES,
 	};
@@ -55,6 +56,7 @@ private:
 	ofxColorSlider guiColor_Wood;
 	ofxColorSlider guiColor_Marble;
 	ofxColorSlider guiColor_RandomLine;
+	ofxColorSlider guiColor_RandomLine_Fine;
 	
 
 
